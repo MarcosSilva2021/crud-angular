@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+// Importando o Angular Material com o alias 'mat'
+@use '@angular/material' as mat;
+
+// incluindo o estilo
+@include mat.elevation-classes();
+@include mat.app-background();
+
+// Definindo as paletas de cores
+$my-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$my-accent: mat.m2-define-palette(mat.$m2-pink-palette);
+$my-warm: mat.m2-define-palette(mat.$m2-red-palette);
+
+
+// Aplicando o tema no projeto
+$my-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warm: $my-warm
+    )
+  )
+);
+
+// incluindo o tema customizado
+@include mat.all-component-themes($my-theme);
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
