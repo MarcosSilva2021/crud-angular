@@ -11,9 +11,10 @@ import { AppMatirialModule } from '../shared/app-matirial/app-matirial.module';
 
 @NgModule({
   declarations: [
-   //CoursesComponent
+    //CoursesComponent
   ],
   imports: [
+
     CommonModule,
     CoursesRoutingModule,
     AppMatirialModule
