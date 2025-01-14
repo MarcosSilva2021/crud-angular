@@ -3,6 +3,7 @@ import { Course } from '../model/course';
 import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { CoursesService } from '../service/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -16,13 +17,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class CoursesComponent implements OnInit {
 
-  courses: Course[] = [
-    {_id: "1", name: "Java", category:"Back-end"}
-  ]; // pode iniciar tanto aqui quanto no construtor
+  courses: Course[] = []; // pode iniciar tanto aqui quanto no construtor
   displayedColumns = ['name', 'category'];
+
+  coursesService : CoursesService;
 
   constructor(){
     //this.courses = [];
+    this.coursesService = new CoursesService();
+    this.courses = this.coursesService.list();
   }
 
   ngOnInit(): void {
