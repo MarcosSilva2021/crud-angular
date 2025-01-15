@@ -19,12 +19,13 @@ export class CoursesComponent implements OnInit {
 
   courses: Course[] = []; // pode iniciar tanto aqui quanto no construtor
   displayedColumns = ['name', 'category'];
+   // injeção de dependencia de modo manual - antigo
+  //coursesService : CoursesService;
 
-  coursesService : CoursesService;
-
-  constructor(){
+  // injeção de dependencia de modo automatico - moderno  -
+  constructor(private coursesService : CoursesService){
     //this.courses = [];
-    this.coursesService = new CoursesService();
+    //this.coursesService = new CoursesService();
     this.courses = this.coursesService.list();
   }
 
