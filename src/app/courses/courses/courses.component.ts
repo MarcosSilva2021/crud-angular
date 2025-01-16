@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CoursesService } from '../service/courses.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -11,26 +12,26 @@ import { CoursesService } from '../service/courses.service';
     MatTableModule,
     MatCardModule,
     MatToolbarModule
-  ],
+],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
 export class CoursesComponent implements OnInit {
 
-  courses: Course[] = []; // pode iniciar tanto aqui quanto no construtor
+  courses$!: Observable<Course[]> ; // pode iniciar tanto aqui quanto no construtor
   displayedColumns = ['name', 'category'];
-   // injeção de dependencia de modo manual - antigo
+   // injeção de dependencia de modo manual - antigoh
   //coursesService : CoursesService;
 
   // injeção de dependencia de modo automatico - moderno  -
   constructor(private coursesService : CoursesService){
     //this.courses = [];
     //this.coursesService = new CoursesService();
-    this.courses = this.coursesService.list();
+  // this.courses$ = this.coursesService.list();
   }
 
   ngOnInit(): void {
-
+    this.courses$ = this.coursesService.list();
   }
 
 }

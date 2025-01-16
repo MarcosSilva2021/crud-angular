@@ -13,8 +13,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(BrowserModule, MatToolbarModule, HttpClient),
     provideAnimations(),
-    //provideHttpClient(withInterceptorsFromDi()),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
     //provideRouter(APP_ROUTES, withPreloading(PreloadAllModules))
   ]
 })
